@@ -1,9 +1,13 @@
 ---
-import GitHub from "./icons/GitHub.astro"
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
-import Link from "./icons/Link.astro"
-import LinkButton from "./LinkButton.astro"
+import GitHub from "./icons/GitHub.astro";
+import NextJS from "./icons/NextJS.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Link from "./icons/Link.astro";
+import LinkButton from "./LinkButton.astro";
+import SpringBoot from "./icons/SpringBoot.astro";
+import Flutter from "./icons/Flutter.astro"
+import Python from "./icons/Python.astro"
+import Streamlit from "./icons/Sreamlit.astro"
 
 const TAGS = {
   NEXT: {
@@ -13,81 +17,144 @@ const TAGS = {
   },
   TAILWIND: {
     name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
+    class: "bg-gray-400 text-white",
     icon: Tailwind,
   },
-}
+  SPRINGBOOT: {
+    name: "SpringBoot",
+    class: "bg-gray-400 text-white",
+    icon: SpringBoot,
+  },
+  FLUTTER: {
+    name: "Flutter",
+    class: "bg-gray-400 text-white",
+    icon: Flutter,
+  },  
+  PYTHON: {
+    name: "Python",
+    class: "bg-gray-400 text-white",
+    icon: Python,
+  },
+  STREAMLIT: {
+    name: "Streamlit",
+    class: "bg-gray-400 text-white",
+    icon: Streamlit,
+  }
+};
 const PROJECTS = [
   {
-    title: "SVGL - A beautiful library with SVG logos",
+    title: "Detección de cambios",
     description:
-      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "Creación de una aplicación para mostrar los cambios entre dos imágenes satelitales de amazonía mediante modelos de Redes Neuronales Profundas.",
+    link: "https://github.com/KevinJuela20/Deteccion_Clasificacion_Cambios",
+    github: "https://github.com/KevinJuela20/Deteccion_Clasificacion_Cambios",
+    image: "/images/Deteccion_De_Cambios.png",
+    tags: [TAGS.PYTHON, TAGS.STREAMLIT],
   },
   {
-    title: "AdventJS - Retos de programación con JavaScript y TypeScript",
+    title: "APP Móvil para doctores",
     description:
-      "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://adventjs.dev",
-    image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "Aplicación especializada en el registro de información de pacientes durante diversos chequeos médicos, facilitando al doctor un control más eficiente y organizado de sus pacientes.",
+    link: "https://github.com/hernancr2000",
+    image: "/images/AppMedicina.svg",
+    tags: [TAGS.FLUTTER, TAGS.SPRINGBOOT],
   },
-]
+];
 ---
 
-<div class="flex flex-col gap-y-16">
-  {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-    </div>
+<div class="relative flex justify-center items-center h-full w-full">
+  <div id="project-card" class="w-full h-[300px] sm:h-[400px] md:h-[400px] overflow-auto relative p-6 box-border">
+    {PROJECTS.map((project, index) => (
+      <div class="project-card hidden w-full h-full flex flex-col justify-between items-center" data-index={index}>
+        <div class="flex flex-col md:flex-row gap-4">
+          <!-- Contenedor de la imagen -->
+          <div class="md:w-1/2">
+            <img src={project.image} alt="Imagen del proyecto" class="w-full h-[250px] object-contain" />
+          </div>
+    
+          <!-- Contenido del proyecto -->
+          <div class="md:w-1/2 flex flex-col justify-between">
+            <!-- Título del proyecto -->
+            <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">
+              {project.title}
+            </h3>
+    
+            <!-- Descripción del proyecto -->
+            <p class="mt-2 text-gray-700 dark:text-gray-400">
+              {project.description}
+            </p>
+    
+            <!-- Etiquetas del proyecto -->
+            <div class="flex flex-wrap mt-2">
+              <ul class="flex flex-row mb-2 gap-x-2">
+                {project.tags.map((tag) => (
+                  <li>
+                    <span
+                      class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+                    >
+                      <tag.icon class="size-4" />
+                      {tag.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+    
+            <!-- Enlaces a GitHub y Preview -->
+            <div class="flex mt-4 gap-2">
+              {project.github && (
+                <LinkButton href={project.github}>
+                  <GitHub class="size-6" />
+                  Code
+                </LinkButton>
+              )}
+              {project.link && (
+                <LinkButton href={project.link}>
+                  <Link class="size-4" />
+                  Preview
+                </LinkButton>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}   
+    
   </div>
 
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GitHub class="size-6" />
-              Code
-              
-            </LinkButton>
-          )}
-          {link && (
-            <LinkButton href={link}>
-              <Link class="size-4" />
-              Preview
-            </LinkButton>
-          )}
-        </footer>
-    </div>
+  <!-- Botones de navegación dentro de la tarjeta -->
+  <div class="absolute bottom-4 right-4 flex space-x-2 pr-4 pb-4">
+    <button class="p-2 dark:bg-gray-500 bg-gray-200 rounded-full" id="prev-project-btn">
+      &larr;
+    </button>
+    <button class="p-2 dark:bg-gray-500 bg-gray-200 rounded-full" id="next-project-btn">
+      &rarr;
+    </button>
   </div>
-</article>
-    ))
-  }
+
 </div>
 
+<script>
+  const projectCards = document.querySelectorAll('.project-card');
 
+  function showProject(index: number) {
+    projectCards.forEach((card, idx) => {
+      card.classList.toggle('hidden', idx !== index);
+    });
+  }
 
+  let currentProjectIndex: number = 0;
+
+  document.getElementById('next-project-btn')?.addEventListener('click', () => {
+    currentProjectIndex = (currentProjectIndex + 1) % projectCards.length;
+    showProject(currentProjectIndex);
+  });
+
+  document.getElementById('prev-project-btn')?.addEventListener('click', () => {
+    currentProjectIndex = (currentProjectIndex - 1 + projectCards.length) % projectCards.length;
+    showProject(currentProjectIndex);
+  });
+
+  // Inicialmente mostrar el primer proyecto
+  showProject(currentProjectIndex);
+</script>

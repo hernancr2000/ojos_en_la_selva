@@ -1,30 +1,67 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro"
-const EXPERIENCIE = [
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCES = [
   {
-    date: "Actualmente...",
-    title: "Creador de Contenido",
-    company: "Twitch",
+    date: "Diciembre 2023",
+    title: "Detección de cambios en imágenes satelitales con IA",
+    company: "Universidad de Cuenca",
     description:
-      "Divulgo sobre programación y desarrollo web en diferentes plataformas. Galardonado como mejor creador de contenido de habla no-inglesa en 2022 y mejor comunidad en 2023 por GitHub.",
-    link: "https://twitch.tv/midudev",
+      "Como proyecto de grado, se estudió y reentrenó redes neuronales enfocadas en la detección de cambios en imágenes satelitales. Finalmente se desarrolló una aplicación que usa imágenes satelitales de Sentinel2 y dos redes neuronales profundas para detectar cambios y clasificarlos.",
+    link: "https://github.com/KevinJuela20/Deteccion_Clasificacion_Cambios",
   },
   {
-    date: "Septiembre 2022",
-    title: "Principal Frontend Engineer",
-    company: "Adevinta Spain",
+    date: "Agosto 2023",
+    title: "Pasante de producción ",
+    company: "Banco del Austro",
     description:
-      "Responsable de la plataforma, componentes y utilidades para la creación y desarrollo de aplicaciones web. Mejora de un 30% en la entrega de software. Implantación de medidas de integración continua y despliegue con A/B testing en más de 15 equipos.",
+      "Manejo de la herramienta Elastic Search para la creación de patrones para procesar y estructurar logs de los diferentes microservicios desplegados en los servidores del Banco del Austro. Creación de dashboards para el monitoreo de los servidores.",
   },
-]
+];
 ---
 
-<ol class="relative mt-16">
-  {
-    EXPERIENCIE.map((experiencie) => (
-      <li class="">
-        <ExperienceItem {...experiencie} />
-      </li>
-    ))
+<div class="relative flex justify-center items-center h-full w-full">
+  <div id="experience-card" class="w-full h-[400px] md:h-[300px] overflow-hidden relative p-6 box-border">
+    {EXPERIENCES.map((experience, index) => (
+      <div class="experience-card  w-full h-full flex flex-col justify-between" data-index={index}>
+        <ExperienceItem {...experience} />
+      </div>
+    ))}
+
+    <!-- Botones de navegación dentro de la tarjeta -->
+    <div class="absolute bottom-4 right-4 flex space-x-2 pr-4 pb-4">
+      <button class="p-2 bg-gray-200 dark:bg-gray-500 rounded-full" id="prev-btn">
+        &larr;
+      </button>
+      <button class="p-2 bg-gray-200 dark:bg-gray-500 rounded-full" id="next-btn">
+        &rarr;
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentIndex = 0;
+  const experiences = document.querySelectorAll<HTMLDivElement>('.experience-card');
+  const prevBtn = document.getElementById('prev-btn') as HTMLButtonElement;
+  const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+
+  function showExperience(index: number) {
+    experiences.forEach((card, i) => {
+      card.classList.toggle('hidden', i !== index);
+    });
   }
-</ol>
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + experiences.length) % experiences.length;
+    showExperience(currentIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % experiences.length;
+    showExperience(currentIndex);
+  });
+
+  // Mostrar la primera experiencia por defecto
+  showExperience(currentIndex);
+</script>

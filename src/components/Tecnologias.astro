@@ -1,0 +1,30 @@
+---
+// src/components/Experience.astro
+import TechCard from './TechCard.astro';
+
+const knownTechnologies = [
+  { name: 'Python', icon: 'https://tabler-icons.io/icons/brand-python.svg' },
+  { name: 'Java', icon: 'https://tabler-icons.io/icons/brand-java.svg' },
+  { name: 'Scala', icon: 'https://tabler-icons.io/icons/brand-scala.svg' },
+  { name: 'C', icon: 'https://tabler-icons.io/icons/brand-c.svg' },
+  { name: 'C++', icon: 'https://tabler-icons.io/icons/brand-c-plusplus.svg' },
+  { name: 'Flask', icon: 'https://tabler-icons.io/icons/brand-flask.svg' },
+];
+
+const learningTechnologies = [
+  { name: 'Angular', icon: 'https://tabler-icons.io/icons/brand-angular.svg' },
+  { name: 'React', icon: 'https://tabler-icons.io/icons/brand-react.svg' },
+  { name: 'Astro', icon: 'https://tabler-icons.io/icons/brand-astro.svg' },
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <TechCard title="Tecnologías que sé" technologies={knownTechnologies} />
+  <TechCard title="Tecnologías que estoy aprendiendo" technologies={learningTechnologies} />
+</div>
+
+<style>
+  div {
+    margin-top: 1rem;
+  }
+</style>

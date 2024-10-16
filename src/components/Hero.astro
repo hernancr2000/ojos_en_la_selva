@@ -7,50 +7,91 @@ import SocialPill from "../components/SocialPill.astro";
 import GitHub from "../components/icons/GitHub.astro";
 ---
 
-<div class="max-w-xl">
+<div class="max-w-5xl">
   <div class="flex gap-4 mb-4">
     <img
-      class="rounded-full size-40 mb-4"
-      src="/images/profile.jpg"
+      class="rounded-full size-40 mb-2"
+      src="/images/logo.png"
       alt="hernan"
     />
+
+    <div class="flex flex-col">
+      <h1
+        class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+      >
+        Ojos en la selva
+      </h1>
+      <br />
+      <h6
+        class="text-xl font-bold tracking-tight text-gray-800 sm:text-xl dark:text-white"
+      >
+        Detección de cambios en la Amazonía usando imágenes satelitales e
+        inteligencia artificial.
+      </h6>
+    </div>
   </div>
 
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
-  >
-    Hola, soy Hernán Coronel
-  </h1>
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
   >
-    Ingeniero en Ciencias de la Computación.
-    <br />
-    Cuenca, Ecuador.
+    La Amazonía enfrenta una creciente deforestación impulsada por diversos
+    factores, como la tala ilegal, la minería, y la expansión urbana y agrícola,
+    lo que pone en peligro su biodiversidad. Para abordar este desafío, se
+    propuso utilizar imágenes satelitales de Sentinel-2 mejoradas mediante
+    técnicas de superresolución y el índice NDVI, con el fin de identificar las
+    áreas afectadas. Se implementó un modelo de inteligencia artificial,
+    reentrenado con datos específicos de la región, que automatiza la detección
+    de cambios en la cobertura forestal. Esta solución permite un monitoreo
+    continuo y preciso, proporcionando información clave para la protección de
+    las zonas más vulnerables.
   </p>
-  <a
-    href="https://www.linkedin.com/in/hernan-jose-coronel-ramon-9062b1207/"
-    target="_blank"
-    rel="noopener"
-    class="flex transition md:hover:scale-105 pt-4"
+
+  <h1
+    class="mt-7 text-2xl font-bold tracking-tight text-gray-800 sm:text-2xl dark:text-white"
   >
-    <Badge>Disponible para nuevos proyectos</Badge>
-  </a>
+    Team
+  </h1>
 
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill
       href="https://www.linkedin.com/in/hernan-jose-coronel-ramon-9062b1207/"
     >
-      <LinkedIn class="size-6" />
-      LinkedIn
+      <img
+        class="rounded-full size-12 mb-2"
+        src="/images/logo.png"
+        alt="hernan"
+      />
+      Hernán Coronel
     </SocialPill>
-    <SocialPill href="https://github.com/hernancr2000">
-      <GitHub class="size-6" />
-      GitHub
+    <SocialPill
+      href="https://www.linkedin.com/in/hernan-jose-coronel-ramon-9062b1207/"
+    >
+      <img
+        class="rounded-full size-12 mb-2"
+        src="/images/logo.png"
+        alt="hernan"
+      />
+      Kevin Juela
     </SocialPill>
-    <SocialPill href="mailto:hernan.coronelr@gmail.com">
-      <Mail class="size-6" />
-      hernan.coronelr@gmail.com
+    <SocialPill
+      href="https://www.linkedin.com/in/hernan-jose-coronel-ramon-9062b1207/"
+    >
+      <img
+        class="rounded-full size-12 mb-2"
+        src="/images/logo.png"
+        alt="hernan"
+      />
+      Víctor Saquicela
+    </SocialPill>
+    <SocialPill
+      href="https://www.linkedin.com/in/hernan-jose-coronel-ramon-9062b1207/"
+    >
+      <img
+        class="rounded-full size-12 mb-2"
+        src="/images/logo.png"
+        alt="hernan"
+      />
+      Lucía Lupercio
     </SocialPill>
   </nav>
 </div>

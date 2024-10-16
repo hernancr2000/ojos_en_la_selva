@@ -43,77 +43,44 @@ const TAGS = {
 };
 const PROJECTS = [
   {
-    title: "Detección de cambios",
-    description:
-      "Creación de una aplicación para mostrar los cambios entre dos imágenes satelitales de amazonía mediante modelos de Redes Neuronales Profundas.",
-    link: "https://github.com/KevinJuela20/Deteccion_Clasificacion_Cambios",
-    github: "https://github.com/KevinJuela20/Deteccion_Clasificacion_Cambios",
-    image: "/images/Deteccion_De_Cambios.png",
+    title: "Herramientas y Tecnologías Utilizadas",
+    image: "/images/Process.png",
     tags: [TAGS.PYTHON, TAGS.STREAMLIT],
-  },
-  {
-    title: "APP Móvil para doctores",
-    description:
-      "Aplicación especializada en el registro de información de pacientes durante diversos chequeos médicos, facilitando al doctor un control más eficiente y organizado de sus pacientes.",
-    link: "https://github.com/hernancr2000",
-    image: "/images/AppMedicina.svg",
-    tags: [TAGS.FLUTTER, TAGS.SPRINGBOOT],
-  },
+  }
 ];
 ---
 
 <div class="relative flex justify-center items-center h-full w-full">
-  <div id="project-card" class="w-full h-[300px] sm:h-[400px] md:h-[400px] overflow-auto relative p-6 box-border">
+  <div id="project-card" class="w-full overflow-auto relative p-2 box-border">
     {PROJECTS.map((project, index) => (
       <div class="project-card w-full h-full flex flex-col justify-between items-center" data-index={index}>
         <div class="flex flex-col md:flex-row gap-4">
           <!-- Contenedor de la imagen -->
           <div class="md:w-1/2">
-            <img src={project.image} alt="Imagen del proyecto" class="w-full h-[250px] object-contain" />
+            <img src={project.image} alt="Imagen del proyecto" class="w-full h-[400px] object-contain" />
           </div>
     
           <!-- Contenido del proyecto -->
-          <div class="md:w-1/2 flex flex-col justify-between">
+          <div class="md:w-1/2 flex flex-col justify-start">
             <!-- Título del proyecto -->
             <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">
               {project.title}
             </h3>
     
-            <!-- Descripción del proyecto -->
-            <p class="mt-2 text-gray-700 dark:text-gray-400">
-              {project.description}
-            </p>
-    
             <!-- Etiquetas del proyecto -->
-            <div class="flex flex-wrap mt-2">
-              <ul class="flex flex-row mb-2 gap-x-2">
+            <div class="flex flex-row mt-2">
+              <ul class="m-2">
                 {project.tags.map((tag) => (
-                  <li>
+                  <li class="m-2">
                     <span
-                      class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+                      class={`inline-flex items-center justify-center gap-x-2 rounded-full text-2xl ${tag.class} px-3 w-full`}
                     >
-                      <tag.icon class="size-4" />
+                      <tag.icon class="size-16" />
                       {tag.name}
                     </span>
                   </li>
                 ))}
               </ul>
-            </div>
-    
-            <!-- Enlaces a GitHub y Preview -->
-            <div class="flex mt-4 gap-2">
-              {project.github && (
-                <LinkButton href={project.github}>
-                  <GitHub class="size-6" />
-                  Code
-                </LinkButton>
-              )}
-              {project.link && (
-                <LinkButton href={project.link}>
-                  <Link class="size-4" />
-                  Preview
-                </LinkButton>
-              )}
             </div>
           </div>
         </div>
@@ -122,39 +89,4 @@ const PROJECTS = [
     
   </div>
 
-  <!-- Botones de navegación dentro de la tarjeta -->
-  <div class="absolute bottom-4 right-4 flex space-x-2 pr-4 pb-4">
-    <button class="p-2 dark:bg-gray-500 bg-gray-200 rounded-full" id="prev-project-btn">
-      &larr;
-    </button>
-    <button class="p-2 dark:bg-gray-500 bg-gray-200 rounded-full" id="next-project-btn">
-      &rarr;
-    </button>
-  </div>
-
 </div>
-
-<script>
-  const projectCards = document.querySelectorAll('.project-card');
-
-  function showProject(index: number) {
-    projectCards.forEach((card, idx) => {
-      card.classList.toggle('hidden', idx !== index);
-    });
-  }
-
-  let currentProjectIndex: number = 0;
-
-  document.getElementById('next-project-btn')?.addEventListener('click', () => {
-    currentProjectIndex = (currentProjectIndex + 1) % projectCards.length;
-    showProject(currentProjectIndex);
-  });
-
-  document.getElementById('prev-project-btn')?.addEventListener('click', () => {
-    currentProjectIndex = (currentProjectIndex - 1 + projectCards.length) % projectCards.length;
-    showProject(currentProjectIndex);
-  });
-
-  // Inicialmente mostrar el primer proyecto
-  showProject(currentProjectIndex);
-</script>

@@ -1,28 +1,27 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import AboutMe from "../components/AboutMe.astro"
-import Briefcase from "../components/icons/Briefcase.astro"
-import CodeIcon from "../components/icons/Code.astro"
-import SectionContainer from '../components/SectionContainer.astro';
-import Projects from "../components/Projects.astro"
-import Experience from '../components/Experience.astro';
-import Hero from "../components/Hero.astro"
-import ProfileCheck from "../components/icons/ProfileCheck.astro"
-import Tecnologias from "../components/Tecnologias.astro"
+import Layout from "../layouts/Layout.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Briefcase from "../components/icons/Briefcase.astro";
+import CodeIcon from "../components/icons/Code.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Projects from "../components/Projects.astro";
+import Experience from "../components/Experience.astro";
+import Hero from "../components/Hero.astro";
+import ProfileCheck from "../components/icons/ProfileCheck.astro";
+import Tecnologias from "../components/Tecnologias.astro";
 ---
 
-<Layout 
-	title="Ojos en la Selva: Detectando Cambios"
-	description='Detectar deforestación en la Amazonía usando IA para analizar imágenes satelitales, contribuyendo a la conservación de la biodiversidad.'
+<Layout
+  title="Ojos en la Selva: Detectando Cambios"
+  description="Detectar deforestación en la Amazonía usando IA para analizar imágenes satelitales, contribuyendo a la conservación de la biodiversidad."
 >
-	<main class="px-4">	
-		<SectionContainer class="py-20 md:py-30">
-			<Hero>
-				</slot>
-			</Hero>		
-		</SectionContainer>
-		<div class="space-y-24">
-			<SectionContainer id="experiencia">
+  <main class="px-4">
+    <SectionContainer class="py-20 md:py-30">
+      <Hero />
+    </SectionContainer>
+  </main>
+  <div class="space-y-24">
+    <!-- <SectionContainer id="experiencia">
 				<h2
 				class="flex items-center mb-4 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
 				>
@@ -30,28 +29,26 @@ import Tecnologias from "../components/Tecnologias.astro"
 					Experiencia
 				</h2>
 				<Experience />
-			</SectionContainer>
+			</SectionContainer> -->
 
-			<SectionContainer id="proyectos">
-				<h2
-					class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-				>
-					<CodeIcon class="size-7" />
-					Arquitectura del Sistema
-				</h2>
-				<Projects />
-				</SectionContainer>
-		
-				<SectionContainer id="sobre-mi">
-				<h2
-					class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
-				>
-					<ProfileCheck class="size-8" />
-					Sobre mí
-				</h2>
-				<AboutMe />
-			</SectionContainer>
-		</div>
-			
-	</main>
+    <SectionContainer id="arquitectura">
+      <h2
+        class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+      >
+        <CodeIcon class="size-7" />
+        Arquitectura del Sistema
+      </h2>
+      <Projects />
+    </SectionContainer>
+
+    <!-- <SectionContainer id="sobre-mi">
+      <h2
+        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+      >
+        <ProfileCheck class="size-8" />
+        Sobre mí
+      </h2>
+      <AboutMe />
+    </SectionContainer> -->
+  </div>
 </Layout>

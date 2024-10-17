@@ -10,7 +10,7 @@ import GitHub from "../components/icons/GitHub.astro";
 <div class="max-w-5xl">
   <div class="flex gap-4 mb-4">
     <img
-      class="rounded-full size-40 mb-2"
+      class="rounded-full size-20 md:size-40 mb-2"
       src="/images/logo.png"
       alt="hernan"
     />
@@ -23,13 +23,20 @@ import GitHub from "../components/icons/GitHub.astro";
       </h1>
       <br />
       <h6
-        class="text-xl font-bold tracking-tight text-gray-800 sm:text-xl dark:text-white"
+        class="text-xl hidden md:block font-bold tracking-tight text-gray-800 sm:text-xl dark:text-white"
       >
         Detección de cambios en la Amazonía usando imágenes satelitales e
         inteligencia artificial.
       </h6>
     </div>
   </div>
+
+  <h6
+    class="text-xl md:hidden font-bold tracking-tight text-gray-800 sm:text-xl dark:text-white"
+  >
+    Detección de cambios en la Amazonía usando imágenes satelitales e
+    inteligencia artificial.
+  </h6>
 
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
@@ -56,41 +63,25 @@ import GitHub from "../components/icons/GitHub.astro";
     <SocialPill
       href="https://www.linkedin.com/in/hernan-jose-coronel-ramon-9062b1207/"
     >
-      <img
-        class="rounded-full size-12 mb-2"
-        src="/images/logo.png"
-        alt="hernan"
-      />
+      <img class="rounded-full size-12" src="/images/logo.png" alt="hernan" />
       Hernán Coronel
     </SocialPill>
     <SocialPill
       href="https://www.linkedin.com/in/hernan-jose-coronel-ramon-9062b1207/"
     >
-      <img
-        class="rounded-full size-12 mb-2"
-        src="/images/logo.png"
-        alt="hernan"
-      />
+      <img class="rounded-full size-12" src="/images/logo.png" alt="hernan" />
       Kevin Juela
     </SocialPill>
     <SocialPill
       href="https://www.linkedin.com/in/hernan-jose-coronel-ramon-9062b1207/"
     >
-      <img
-        class="rounded-full size-12 mb-2"
-        src="/images/logo.png"
-        alt="hernan"
-      />
+      <img class="rounded-full size-12" src="/images/logo.png" alt="hernan" />
       Víctor Saquicela
     </SocialPill>
     <SocialPill
       href="https://www.linkedin.com/in/hernan-jose-coronel-ramon-9062b1207/"
     >
-      <img
-        class="rounded-full size-12 mb-2"
-        src="/images/logo.png"
-        alt="hernan"
-      />
+      <img class="rounded-full size-12" src="/images/logo.png" alt="hernan" />
       Lucía Lupercio
     </SocialPill>
   </nav>

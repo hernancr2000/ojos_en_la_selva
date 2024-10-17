@@ -2,12 +2,13 @@
 import GitHub from "./icons/GitHub.astro";
 import NextJS from "./icons/NextJS.astro";
 import Tailwind from "./icons/Tailwind.astro";
-import Link from "./icons/Link.astro";
-import LinkButton from "./LinkButton.astro";
 import SpringBoot from "./icons/SpringBoot.astro";
-import Flutter from "./icons/Flutter.astro"
-import Python from "./icons/Python.astro"
+import Flutter from "./icons/Flutter.astro";
+import Python from "./icons/Python.astro";
+import Pixelcut from "./icons/Pixelcut.astro";
 import Streamlit from "./icons/Sreamlit.astro"
+import SocialPill from "../components/SocialPill.astro";
+import Opencd from "./icons/Opencd.astro"
 
 const TAGS = {
   NEXT: {
@@ -34,18 +35,32 @@ const TAGS = {
     name: "Python",
     class: "bg-gray-400 text-white",
     icon: Python,
+    link: "https://www.python.org/downloads/"
   },
   STREAMLIT: {
     name: "Streamlit",
     class: "bg-gray-400 text-white",
     icon: Streamlit,
+    link: "https://streamlit.io"
+  },
+  PIXELCUT: {
+    name: "Pixelcut AI",
+    class: "bg-gray-400 text-white",
+    icon: Pixelcut,
+    link: "https://www.pixelcut.ai/image-upscaler"
+  },
+  OPENCD: {
+    name: "OpenCD",
+    class: "bg-gray-400 text-white",
+    icon: Opencd,
+    link: "https://github.com/likyoo/open-cd"
   }
 };
 const PROJECTS = [
   {
     title: "Herramientas y Tecnologías Utilizadas",
     image: "/images/Process.png",
-    tags: [TAGS.PYTHON, TAGS.STREAMLIT],
+    tags: [TAGS.PYTHON, TAGS.STREAMLIT, TAGS.PIXELCUT, TAGS.OPENCD],
   }
 ];
 ---
@@ -72,12 +87,12 @@ const PROJECTS = [
               <ul class="m-2">
                 {project.tags.map((tag) => (
                   <li class="m-2">
-                    <span
-                      class={`inline-flex items-center justify-center gap-x-2 rounded-full text-2xl ${tag.class} px-3 w-full`}
-                    >
-                      <tag.icon class="size-16" />
-                      {tag.name}
-                    </span>
+                    <div >
+                      <SocialPill href={tag.link}>
+                        <tag.icon class="size-10" />
+                        {tag.name}
+                      </SocialPill>
+                    </div>
                   </li>
                 ))}
               </ul>

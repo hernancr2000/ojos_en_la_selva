@@ -1,30 +1,33 @@
 ---
-import SunIcon from "./icons/Sun.astro"
-import MoonIcon from "./icons/Moon.astro"
-import SystemIcon from "./icons/System.astro"
+import SunIcon from "./icons/Sun.astro";
+import MoonIcon from "./icons/Moon.astro";
+import SystemIcon from "./icons/System.astro";
 
-const THEMES = ["Light", "Dark", "System"]
+const THEMES = ["Light", "Dark", "System"];
 ---
 
 <div class="relative ml-1 mr-1">
   <button
     id="theme-toggle-btn"
-    class="appearance-none border-none flex hover:scale-125 transition"
+    class="appearance-none border-none flex items-center justify-center w-6 h-6 hover:scale-125 transition relative"
   >
     <span class="sr-only">Elige el tema</span>
-    <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
+    <SunIcon
+      id="light"
+      class="theme-toggle-icon size-5 transition-all absolute"
+    />
     <MoonIcon
       id="dark"
-      class="theme-toggle-icon absolute size-5 transition-all"
+      class="theme-toggle-icon size-5 transition-all absolute"
     />
     <SystemIcon
       id="system"
-      class="theme-toggle-icon absolute size-5 transition-all"
+      class="theme-toggle-icon size-5 transition-all absolute"
     />
   </button>
   <div
     id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md z-50"
   >
     <ul>
       {
@@ -49,67 +52,91 @@ const THEMES = ["Light", "Dark", "System"]
       transform: scale(0.8);
       opacity: 0;
     }
-
     to {
       transform: scale(1);
       opacity: 1;
     }
   }
+
+  .theme-toggle-icon {
+    transform: scale(0);
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .theme-toggle-icon[style*="scale: 1"] {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 </style>
 
 <script is:inline>
-  let remove = null
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-  const themesMenu = document.getElementById("themes-menu")
+  let remove = null;
+  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  const themesMenu = document.getElementById("themes-menu");
 
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "system"
+      return localStorage.getItem("theme") ?? "system"; // Valor predeterminado
     }
-
     return window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
-      : "light"
-  }
+      : "light"; // En caso de que localStorage no funcione, dar un valor predeterminado.
+  };
 
   const updateIcon = (themePreference) => {
     document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0"
-    })
-  }
+      element.style.scale = element.id === themePreference ? "1" : "0";
+    });
+  };
 
   const updateTheme = () => {
     if (remove != null) {
-      remove()
+      remove();
     }
-    matchMedia.addEventListener("change", updateTheme)
+    matchMedia.addEventListener("change", updateTheme);
     remove = () => {
-      matchMedia.removeEventListener("change", updateTheme)
-    }
+      matchMedia.removeEventListener("change", updateTheme);
+    };
 
-    const themePreference = getThemePreference()
+    // Definir themePreference
+    const themePreference = getThemePreference(); // Verifica si este valor está bien definido
+
     const isDark =
       themePreference === "dark" ||
-      (themePreference === "system" && matchMedia.matches)
+      (themePreference === "system" && matchMedia.matches);
 
-    updateIcon(themePreference)
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark")
-  }
+    updateIcon(themePreference); // Usar themePreference
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+  };
 
-  updateTheme()
+  updateTheme();
 
-  document.addEventListener("click", () => themesMenu.classList.remove("open"))
+  // Mejorar el manejo de clicks
+  document.addEventListener("click", (e) => {
+    const themePreference = getThemePreference(); // Invocar aquí para obtener el tema actual
+    
+    if (
+      !themesMenu.contains(e.target) &&
+      !e.target.closest("#theme-toggle-btn")
+    ) {
+      themesMenu.classList.remove("open");
+    }
+  });
 
   document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation()
-    const isClosed = !themesMenu.classList.contains("open")
-    themesMenu.classList[isClosed ? "add" : "remove"]("open")
-  })
+    e.stopPropagation();
+    const isClosed = !themesMenu.classList.contains("open");
+    themesMenu.classList[isClosed ? "add" : "remove"]("open");
+  });
 
   document.querySelectorAll(".themes-menu-option").forEach((element) => {
     element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
-      updateTheme()
-    })
-  })
+      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
+      updateTheme();
+      themesMenu.classList.remove("open");
+    });
+  });
 </script>

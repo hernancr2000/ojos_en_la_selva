@@ -1,0 +1,115 @@
+---
+import MetodologiaItem from "./MetodologiaItem.astro";
+
+const Procesos = [
+    {
+      name: "Area de estudio",
+      description: "Se seleccionó la región amazónica ecuatoriana de Sucúa como caso de estudio. Se identificaron seis áreas cercanas a la ciudad donde se observaban evidentes zonas de deforestación.",
+      image: "./images/Zonas.png",
+      caption: "Localidad de Sucúa - Ecuador",
+      clase: "h-[256px]"
+    },
+    {
+      name: "Descarga de datos",
+      description: "El proceso de descarga de datos se realizó con una configuración avanzada, seleccionando las bandas 2, 3, 4 y 8, con una resolución de 256x256 píxeles y en formato TIFF de 32 bits. Para cada una de las zonas seleccionadas, se descargó una imagen satelital por año, desde 2016 hasta 2024.",
+      image: "./images/Descarga.png",
+      caption: "Zona 1 - 17/09/2024 - 256x256 px",
+      clase: ""
+    },
+    {
+      name: "Aumento de resolución",
+      description: "Antes de mejorar la calidad de las imágenes, se genera una imagen combinada RGB utilizando las bandas 2, 3 y 4. Una vez obtenidas, se emplea la herramienta Pixelcut AI para aumentar la calidad en un factor de 4, lo que da como resultado una imagen de 1024x1024 píxeles con mayor resolución.",
+      image: "./images/mejoramiento.png",
+      caption: "Zona  1 - 17/09/2024 - 1024x1024 px",
+      clase: "h-[256px]"
+    },
+    {
+      name: "Creación del conjunto de datos",
+      description: "El nuevo conjunto de datos se organizó en tres carpetas: A (imágenes de una fecha anterior), B (imágenes de una fecha posterior) y Label (máscara en blanco y negro que refleja los cambios). El dataset final constó de 136 registros.",
+      image: "./images/Dataset.svg",
+      caption: "Distribución de imágenes satelitales",
+      clase: ""
+    },
+    {
+      name: "Reentrenamiento del modelo BAN",
+      description: "El reentrenamiento de la red BAN se realizó en el supercomputador de CEDIA y tomó aproximadamente 3 horas, completando un total de 40,000 épocas, utilizando una GPU de 40GB.",
+      image: "./images/Reentrenar.svg",
+      caption: "Proceso de reentrenamiento",
+      clase: ""
+    },
+    {
+      name: "Evaluación del modelo",
+      description: "Del conjunto de datos, se seleccionaron 10 ejemplos que no fueron utilizados durante el reentrenamiento de la red BAN, para evaluar su rendimiento. Se llevó a cabo una comparación visual y de métricas, lo que permitió concluir que el modelo es altamente eficaz en la identificación de cambios en imágenes satelitales.",
+      image: "./images/Evaluacion.svg",
+      caption: "Comparación de imagen esperada y de salida",
+      clase: ""
+    },
+];
+---
+
+<div class="relative flex justify-center items-center h-full w-full">
+  <div
+    id="experience-card"
+    class="w-full h-auto overflow-hidden relative p-6 box-border"
+  >
+    {
+      Procesos.map((proceso, index) => (
+        <div
+          class="experience-card  w-full h-full flex flex-col justify-between"
+          data-index={index}
+        >
+          <MetodologiaItem {...proceso} />
+        </div>
+      ))
+    }
+
+    <!-- Botones de navegación dentro de la tarjeta -->
+    <div class="absolute bottom-4 right-4 flex space-x-2 pr-4 pb-4">
+      <button
+        class="p-2 bg-gray-200 dark:bg-gray-500 rounded-full hover:bg-yellow-200"
+        id="prev-btn"
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-left" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M14 6l-6 6l6 6v-12" />
+      </svg>
+      </button>
+      <button
+        class="p-2 bg-gray-200 dark:bg-gray-500 rounded-full hover:bg-yellow-200"
+        id="next-btn"
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M10 18l6 -6l-6 -6v12" />
+      </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentIndex = 0;
+  const experiences =
+    document.querySelectorAll<HTMLDivElement>(".experience-card");
+  const prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
+  const nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
+
+  function showExperience(index: number) {
+    experiences.forEach((card, i) => {
+      card.classList.toggle("hidden", i !== index);
+    });
+  }
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + experiences.length) % experiences.length;
+    showExperience(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % experiences.length;
+    showExperience(currentIndex);
+  });
+
+  // Mostrar la primera experiencia por defecto
+  showExperience(currentIndex);
+</script>

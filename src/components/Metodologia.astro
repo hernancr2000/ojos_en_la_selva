@@ -5,32 +5,44 @@ const Procesos = [
     {
       name: "Area de estudio",
       description: "Se seleccionó la región amazónica ecuatoriana de Sucúa como caso de estudio. Se identificaron seis áreas cercanas a la ciudad donde se observaban evidentes zonas de deforestación.",
-      image: "./images/Zonas.png"
+      image: "./images/Zonas.png",
+      caption: "Localidad de Sucúa - Ecuador",
+      clase: "h-[256px]"
     },
     {
       name: "Descarga de datos",
       description: "El proceso de descarga de datos se realizó con una configuración avanzada, seleccionando las bandas 2, 3, 4 y 8, con una resolución de 256x256 píxeles y en formato TIFF de 32 bits. Para cada una de las zonas seleccionadas, se descargó una imagen satelital por año, desde 2016 hasta 2024.",
-      image: "./images/Descarga.png"
+      image: "./images/Descarga.png",
+      caption: "Zona 1 - 17/09/2024 - 256x256 px",
+      clase: ""
     },
     {
       name: "Aumento de resolución",
       description: "Antes de mejorar la calidad de las imágenes, se genera una imagen combinada RGB utilizando las bandas 2, 3 y 4. Una vez obtenidas, se emplea la herramienta Pixelcut AI para aumentar la calidad en un factor de 4, lo que da como resultado una imagen de 1024x1024 píxeles con mayor resolución.",
-      image: "./images/mejoramiento.png"
+      image: "./images/mejoramiento.png",
+      caption: "Zona  1 - 17/09/2024 - 1024x1024 px",
+      clase: "h-[256px]"
     },
     {
       name: "Creación del conjunto de datos",
       description: "El nuevo conjunto de datos se organizó en tres carpetas: A (imágenes de una fecha anterior), B (imágenes de una fecha posterior) y Label (máscara en blanco y negro que refleja los cambios). El dataset final constó de 136 registros.",
-      image: "./images/mejoramiento.png"
+      image: "./images/Dataset.svg",
+      caption: "Distribución de imágenes satelitales",
+      clase: ""
     },
     {
       name: "Reentrenamiento del modelo BAN",
       description: "El reentrenamiento de la red BAN se realizó en el supercomputador de CEDIA y tomó aproximadamente 3 horas, completando un total de 40,000 épocas, utilizando una GPU de 40GB.",
-      image: "./images/mejoramiento.png"
+      image: "./images/Reentrenar.svg",
+      caption: "Proceso de reentrenamiento",
+      clase: ""
     },
     {
       name: "Evaluación del modelo",
       description: "Del conjunto de datos, se seleccionaron 10 ejemplos que no fueron utilizados durante el reentrenamiento de la red BAN, para evaluar su rendimiento. Se llevó a cabo una comparación visual y de métricas, lo que permitió concluir que el modelo es altamente eficaz en la identificación de cambios en imágenes satelitales.",
-      image: "./images/mejoramiento.png"
+      image: "./images/Evaluacion.svg",
+      caption: "Comparación de imagen esperada y de salida",
+      clase: ""
     },
 ];
 ---
@@ -38,7 +50,7 @@ const Procesos = [
 <div class="relative flex justify-center items-center h-full w-full">
   <div
     id="experience-card"
-    class="w-full h-[620px] md:h-[450px] overflow-hidden relative p-6 box-border"
+    class="w-full h-auto overflow-hidden relative p-6 box-border"
   >
     {
       Procesos.map((proceso, index) => (

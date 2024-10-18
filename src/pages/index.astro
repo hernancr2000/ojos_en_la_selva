@@ -1,17 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import AboutMe from "../components/AboutMe.astro";
-import Briefcase from "../components/icons/Briefcase.astro";
 import CodeIcon from "../components/icons/Code.astro";
 import SectionContainer from "../components/SectionContainer.astro";
-import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
+import Arquitectura from "../components/Arquitectura.astro";
+import Modelos from "../components/Modelos-DC.astro";
 import Hero from "../components/Hero.astro";
 import ProfileCheck from "../components/icons/ProfileCheck.astro";
-import Tecnologias from "../components/Tecnologias.astro";
 import Models from "../components/icons/Models.astro";
-import Settings from "../components/icons/Funcionamiento.astro";
-import Funcionamiento from "../components/Funcionamiento.astro";
 import Visualizador from "../components/Visualizador.astro";
 import Metodologia from "../components/Metodologia.astro";
 ---
@@ -44,7 +39,7 @@ import Metodologia from "../components/Metodologia.astro";
         <CodeIcon class="size-8" />
         Arquitectura del Sistema
       </h2>
-      <Projects />
+      <Arquitectura />
     </SectionContainer>
 
     <SectionContainer id="modelos-ia">
@@ -54,7 +49,7 @@ import Metodologia from "../components/Metodologia.astro";
         <Models class="size-8" />
         Modelos
       </h2>
-      <Experience />
+      <Modelos />
     </SectionContainer>
 
     <SectionContainer id="visualizador">
@@ -65,16 +60,6 @@ import Metodologia from "../components/Metodologia.astro";
         Visualizador
       </h2>
       <Visualizador />
-    </SectionContainer>    
-
-    <SectionContainer id="funcionamiento">
-      <h2
-      class="flex items-center mb-4 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-      >
-        <Settings class="size-8" />
-        Funcionamiento
-      </h2>
-      <Funcionamiento />
-    </SectionContainer>
+    </SectionContainer> 
   </div>
 </Layout>

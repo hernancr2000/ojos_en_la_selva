@@ -1,0 +1,116 @@
+---
+import ModelItem from "./ModelItem.astro";
+
+const Modelos = [
+  {
+    name: "BAN (Bi-Temporal Adapter Network)",
+    description:
+      "Esta arquitectura emplea un modelo fundacional preentrenado junto con una rama de adaptadores bitemporales (Bi-TAB) para procesar imágenes capturadas en distintos momentos. Como entrada, se utilizan dos imágenes satelitales de 1024x1024 píxeles, y el resultado es una imagen en blanco y negro del mismo tamaño. En la salida, las áreas en blanco indican cambios en la cobertura vegetal, mientras que las zonas negras representan regiones sin alteraciones.",
+    image: "./images/BAN.svg",
+    link: "https://github.com/likyoo/open-cd/tree/main/configs/ban",
+  },
+  {
+    name: "ResNetV152",
+    description:
+      "El modelo de aprendizaje profundo, basado en la arquitectura ResNet, fue preentrenado con datos de Sentinel-2 para clasificar la cobertura del suelo en 10 categorías. Este modelo se utiliza para identificar el tipo de cambio ocurrido entre dos imágenes satelitales bitemporales. Cada polígono blanco de la imagen de salida generada por la red BAN se recorta en figuras rectangulares y se redimensiona a 64x64 píxeles y luego se envía al modelo para su clasificación entregando una etiqueta con el nombre de la clase.",
+    image: "./images/ResNet.svg",
+    link: "https://www.kaggle.com/code/nilesh789/land-cover-classification-with-eurosat-dataset/notebook",
+  },
+  {
+    name: "NDVI (Índice de Vegetación de Diferencia Normalizada)",
+    description:
+      "No es un modelo como tal, sino el cálculo del NDVI utilizando las bandas B4 y B8 de las imágenes satelitales. Se obtiene el NDVI de cada imagen y se aplica una diferenciación binaria para clasificar y colorear los píxeles. Si no hay cambio, el píxel se colorea de morado; si el valor del píxel en la imagen anterior es mayor que en la posterior, se colorea de amarillo, indicando un cambio de vegetación a no vegetación. Por último, si el valor del píxel en la imagen anterior es menor que en la posterior, se colorea de turquesa, señalando un cambio de no vegetación a vegetación.",
+    image: "./images/NDVI.svg",
+    link: "https://custom-scripts.sentinel-hub.com/custom-scripts/sentinel-2/ndvi/",
+  },
+];
+---
+
+<div class="relative flex justify-center items-center h-full w-full">
+  <div
+    id="experience-card"
+    class="w-full h-[620px] md:h-[450px] overflow-hidden relative p-6 box-border"
+  >
+    {
+      Modelos.map((model, index) => (
+        <div
+          class="experience-card  w-full h-full flex flex-col justify-between"
+          data-index={index}
+        >
+          <ModelItem {...model} />
+        </div>
+      ))
+    }
+
+    <!-- Botones de navegación dentro de la tarjeta -->
+    <div class="absolute bottom-4 right-4 flex space-x-2 pr-4 pb-4">
+      <button
+        class="p-2 bg-gray-200 dark:bg-gray-500 rounded-full hover:bg-yellow-200"
+        id="prev-btn"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-caret-left"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="#2c3e50"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M14 6l-6 6l6 6v-12"></path>
+        </svg>
+      </button>
+      <button
+        class="p-2 bg-gray-200 dark:bg-gray-500 rounded-full hover:bg-yellow-200"
+        id="next-btn"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-caret-right"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="#2c3e50"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M10 18l6 -6l-6 -6v12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentIndex = 0;
+  const experiences =
+    document.querySelectorAll<HTMLDivElement>(".experience-card");
+  const prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
+  const nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
+
+  function showExperience(index: number) {
+    experiences.forEach((card, i) => {
+      card.classList.toggle("hidden", i !== index);
+    });
+  }
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + experiences.length) % experiences.length;
+    showExperience(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % experiences.length;
+    showExperience(currentIndex);
+  });
+
+  // Mostrar la primera experiencia por defecto
+  showExperience(currentIndex);
+</script>

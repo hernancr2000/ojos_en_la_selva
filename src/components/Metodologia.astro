@@ -49,13 +49,13 @@ const Procesos = [
 
 <div class="relative flex justify-center items-center h-full w-full">
   <div
-    id="experience-card"
+    id="proceso-card"
     class="w-full h-auto overflow-hidden relative p-6 box-border"
   >
     {
       Procesos.map((proceso, index) => (
         <div
-          class="experience-card  w-full h-full flex flex-col justify-between"
+          class="proceso-card  w-full h-full flex flex-col justify-between"
           data-index={index}
         >
           <MetodologiaItem {...proceso} />
@@ -67,7 +67,7 @@ const Procesos = [
     <div class="absolute bottom-4 right-4 flex space-x-2 pr-4 pb-4">
       <button
         class="p-2 bg-gray-200 dark:bg-gray-500 rounded-full hover:bg-yellow-200"
-        id="prev-btn"
+        id="prev-btn-p"
       >
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-left" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -76,7 +76,7 @@ const Procesos = [
       </button>
       <button
         class="p-2 bg-gray-200 dark:bg-gray-500 rounded-full hover:bg-yellow-200"
-        id="next-btn"
+        id="next-btn-p"
       >
       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -90,9 +90,9 @@ const Procesos = [
 <script>
   let currentIndex = 0;
   const experiences =
-    document.querySelectorAll<HTMLDivElement>(".experience-card");
-  const prevBtn = document.getElementById("prev-btn") as HTMLButtonElement;
-  const nextBtn = document.getElementById("next-btn") as HTMLButtonElement;
+    document.querySelectorAll<HTMLDivElement>(".proceso-card");
+  const prevBtn = document.getElementById("prev-btn-p") as HTMLButtonElement;
+  const nextBtn = document.getElementById("next-btn-p") as HTMLButtonElement;
 
   function showExperience(index: number) {
     experiences.forEach((card, i) => {

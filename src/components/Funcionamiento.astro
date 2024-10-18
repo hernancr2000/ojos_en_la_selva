@@ -1,107 +1,94 @@
 ---
-import NextJS from "./icons/NextJS.astro";
-import Tailwind from "./icons/Tailwind.astro";
-import SpringBoot from "./icons/SpringBoot.astro";
-import Flutter from "./icons/Flutter.astro";
-import Python from "./icons/Python.astro";
-import Pixelcut from "./icons/Pixelcut.astro";
-import Streamlit from "./icons/Sreamlit.astro";
-import SocialPill from "../components/SocialPill.astro";
 
-const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-gray-400 text-white",
-    icon: Tailwind,
-  },
-  SPRINGBOOT: {
-    name: "SpringBoot",
-    class: "bg-gray-400 text-white",
-    icon: SpringBoot,
-  },
-  FLUTTER: {
-    name: "Flutter",
-    class: "bg-gray-400 text-white",
-    icon: Flutter,
-  },  
-  PYTHON: {
-    name: "Python",
-    class: "bg-gray-400 text-white",
-    icon: Python,
-    link: "https://www.python.org/downloads/"
-  },
-  STREAMLIT: {
-    name: "Streamlit",
-    class: "bg-gray-400 text-white",
-    icon: Streamlit,
-    link: "https://streamlit.io"
-  },
-  PIXELCUT: {
-    name: "Pixelcut AI",
-    class: "bg-gray-400 text-white",
-    icon: Pixelcut,
-    link: "https://www.pixelcut.ai/image-upscaler"
-  },
-};
-const PROJECTS = [
-  {
-    title: "Herramientas y Tecnologías Utilizadas",
-    image: "/images/Process.png",
-    tags: [TAGS.PYTHON, TAGS.STREAMLIT, TAGS.PIXELCUT],
-  }
-];
 ---
 
 <div class="relative flex justify-center items-center h-full w-full">
   <div class="w-full overflow-auto relative p-2 box-border">
-
     <!-- Línea de tiempo -->
     <div class="border-l-4 ml-5 border-gray-300 relative">
-      
       <!-- Paso 1: Selección de Fechas -->
       <div class="mb-10 ml-6">
-        <div class="absolute w-8 h-8 bg-green-500 rounded-full -left-4 flex justify-center items-center">
+        <div
+          class="absolute w-8 h-8 bg-green-500 rounded-full -left-4 flex justify-center items-center"
+        >
           <span class="text-white font-bold">1</span>
         </div>
-        <h3 class="text-lg font-semibold text-gray-700">Selección de Fechas para Comparación</h3>
-        <p class="text-gray-600">El usuario puede seleccionar dos fechas para comparar imágenes satelitales de diferentes momentos.</p>
+        <h3 class="text-lg font-semibold text-gray-700 dark:text-white">
+          Selección de zona y fechas para comparación
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          El usuario puede seleccionar una zona y dos fechas disponibles para
+          visualizar las imágenes satelitales de diferentes momentos.
+        </p>
       </div>
-      
+
       <!-- Paso 2: Visualización de Imágenes Satelitales -->
       <div class="mb-10 ml-6">
-        <div class="absolute w-8 h-8 bg-blue-500 rounded-full -left-4 flex justify-center items-center">
+        <div
+          class="absolute w-8 h-8 bg-blue-500 rounded-full -left-4 flex justify-center items-center"
+        >
           <span class="text-white font-bold">2</span>
         </div>
-        <h3 class="text-lg font-semibold text-gray-700">Visualización de Imágenes Satelitales</h3>
-        <p class="text-gray-600">Muestra imágenes satelitales de alta resolución para el análisis de las áreas seleccionadas.</p>
+        <h3 class="text-lg font-semibold text-gray-700 dark:text-white">
+          Visualización de Imágenes Satelitales
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Luego de la selección de la zona y las fechas, se muestra las dos
+          imágenes satelitales de alta resolución y los cambios detectados. Hay
+          dos formas en las que se verán los cambios en las imágenes: Detección
+          mediante inteligencia artificial, detección mediante el NDVI
+        </p>
       </div>
 
       <!-- Paso 3: Detección y Clasificación de Cambios (AI) -->
       <div class="mb-10 ml-6">
-        <div class="absolute w-8 h-8 bg-red-500 rounded-full -left-4 flex justify-center items-center">
+        <div
+          class="absolute w-8 h-8 bg-red-500 rounded-full -left-4 flex justify-center items-center"
+        >
           <span class="text-white font-bold">3</span>
         </div>
-        <h3 class="text-lg font-semibold text-gray-700">Detección y Clasificación de Cambios</h3>
-        <p class="text-gray-600">
-          El módulo AI utiliza BAN y ResNet152V2 para la detección y clasificación automática de los cambios en el terreno.
+        <h3 class="text-lg font-semibold text-gray-700 dark:text-white">
+          Detección y Clasificación de Cambios (Mediante IA)
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          En el módulo AI muestra los resultados del uso de la BAN y la
+          ResNet152V2 para la detección y clasificación automática de los
+          cambios en el terreno respectivamente.
         </p>
       </div>
-      
+
       <!-- Paso 4: Cálculo del NDVI -->
-      <div class="ml-6">
-        <div class="absolute w-8 h-8 bg-yellow-500 rounded-full -left-4 flex justify-center items-center">
+      <div class="ml-6 mb-10">
+        <div
+          class="absolute w-8 h-8 bg-yellow-500 rounded-full -left-4 flex justify-center items-center"
+        >
           <span class="text-white font-bold">4</span>
         </div>
-        <h3 class="text-lg font-semibold text-gray-700">Cálculo del Índice NDVI</h3>
-        <p class="text-gray-600">El módulo NDVI calcula este índice para detectar cambios en la vegetación usando un análisis basado en píxeles.</p>
+        <h3 class="text-lg font-semibold text-gray-700 dark:text-white">
+          Detección de cambios (Mediante el NDVI)
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          El módulo NDVI calcula este índice para detectar cambios en la
+          vegetación usando un análisis basado en píxeles.
+        </p>
       </div>
 
+      <!-- Paso 4: Cálculo del NDVI -->
+      <div class="ml-6">
+        <div
+          class="absolute w-8 h-8 bg-purple-500 rounded-full -left-4 flex justify-center items-center"
+        >
+          <span class="text-white font-bold">5</span>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-700 dark:text-white">
+          Selección de nueva zona
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300">
+          Este apartado permite subir los archivos necesarios para poder subir
+          una nueva zona y hallar los cambios que hay entre las diferentes
+          fechas que se hayan descargado las imágenes.
+        </p>
+      </div>
     </div>
   </div>
 </div>
-

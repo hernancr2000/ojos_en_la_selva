@@ -1,9 +1,60 @@
 ---
+import SectionContainer from "../components/SectionContainer.astro";
+import Settings from "../components/icons/Funcionamiento.astro";
+import Funcionamiento from "../components/Funcionamiento.astro";
 ---
 
-<div class="relative flex justify-center items-center w-full">
-    
-    <div class="w-3/4 m-3">
-        <video src="./videos/Sistema de visualización.mp4" controls autoplay muted loop></video>
-    </div>
+<div class="relative flex flex-col justify-center items-center w-full">
+  <div class="w-3/4 m-3">
+    <video
+      src="./videos/Sistema de visualización.mp4"
+      controls
+      autoplay
+      muted
+      loop></video>
+  </div>
+
+  <!-- Botón para mostrar/ocultar los detalles -->
+  <button
+    id="toggleButton"
+    class="inline-flex items-center text-lg font-medium text-yellow-500 dark:text-yellow-200 dark:hover:text-yellow-300 hover:text-yellow-700"
+  >
+    Mostrar detalles
+  </button>
+
+  <!-- Sección que se ocultará inicialmente -->
+  <div id="detailsSection" class="hidden mt-20 w-full">
+    <SectionContainer id="funcionamiento">
+      <h2
+        class="flex items-center mb-4 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+      >
+        <Settings class="size-8" />
+        Detalles del Visualizador
+      </h2>
+      <Funcionamiento />
+    </SectionContainer>
+  </div>
 </div>
+
+<script>
+  // Obtener el botón y la sección de detalles
+  const toggleButton = document.getElementById("toggleButton");
+  const detailsSection = document.getElementById("detailsSection");
+
+  if (toggleButton) {
+    // Manejar el evento de clic en el botón
+    toggleButton.addEventListener("click", () => {
+      if (detailsSection) {
+        // Alternar la visibilidad de la sección
+        detailsSection.classList.toggle("hidden");
+
+        // Cambiar el texto del botón
+        if (detailsSection.classList.contains("hidden")) {
+          toggleButton.textContent = "Mostrar detalles";
+        } else {
+          toggleButton.textContent = "Ocultar detalles";
+        }
+      }
+    });
+  }
+</script>

@@ -11,8 +11,6 @@ import ProfileCheck from "../components/icons/ProfileCheck.astro";
 import Tecnologias from "../components/Tecnologias.astro";
 import Models from "../components/icons/Models.astro";
 import Visualizador from "../components/Visualizador.astro";
-import Settings from "../components/icons/Funcionamiento.astro";
-import Funcionamiento from "../components/Funcionamiento.astro";
 ---
 
 <Layout
@@ -24,13 +22,13 @@ import Funcionamiento from "../components/Funcionamiento.astro";
       <Hero />
     </SectionContainer>
   </main>
-  <div class="space-y-24">
 
+  <div class="space-y-24">
     <SectionContainer id="arquitectura">
       <h2
         class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
       >
-        <CodeIcon class="size-7" />
+        <CodeIcon class="size-8" />
         Arquitectura del Sistema
       </h2>
       <Projects />
@@ -38,7 +36,7 @@ import Funcionamiento from "../components/Funcionamiento.astro";
 
     <SectionContainer id="modelos-ia">
       <h2
-      class="flex items-center mb-4 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+        class="flex items-center mb-4 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
       >
         <Models class="size-8" />
         Modelos
@@ -46,7 +44,7 @@ import Funcionamiento from "../components/Funcionamiento.astro";
       <Experience />
     </SectionContainer>
 
-    <!-- <SectionContainer id="models">
+    <SectionContainer id="visualizador">
       <h2
         class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
       >
@@ -55,5 +53,7 @@ import Funcionamiento from "../components/Funcionamiento.astro";
       </h2>
       <Visualizador />
     </SectionContainer>
+
+    
   </div>
 </Layout>

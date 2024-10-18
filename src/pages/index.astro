@@ -10,6 +10,8 @@ import Hero from "../components/Hero.astro";
 import ProfileCheck from "../components/icons/ProfileCheck.astro";
 import Tecnologias from "../components/Tecnologias.astro";
 import Models from "../components/icons/Models.astro";
+import Settings from "../components/icons/Funcionamiento.astro";
+import Funcionamiento from "../components/Funcionamiento.astro";
 ---
 
 <Layout
@@ -17,7 +19,7 @@ import Models from "../components/icons/Models.astro";
   description="Detectar deforestación en la Amazonía usando IA para analizar imágenes satelitales, contribuyendo a la conservación de la biodiversidad."
 >
   <main class="px-4">
-    <SectionContainer class="py-20 md:py-30">
+    <SectionContainer id="inicio" class="py-20 md:py-30">
       <Hero />
     </SectionContainer>
   </main>
@@ -41,6 +43,19 @@ import Models from "../components/icons/Models.astro";
         Modelos
       </h2>
       <Experience />
+    </SectionContainer>
+
+
+    
+
+    <SectionContainer id="funcionamiento">
+      <h2
+      class="flex items-center mb-4 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+      >
+        <Settings class="size-8" />
+        Funcionamiento
+      </h2>
+      <Funcionamiento />
     </SectionContainer>
 
     <!-- <SectionContainer id="models">

@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CodeIcon from "../components/icons/Code.astro";
+import MetodologiaIcon from "../components/icons/Metodologia.astro";
+import VisualizadorIcon from "../components/icons/VisualizadorIcon.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import Arquitectura from "../components/Arquitectura.astro";
 import Modelos from "../components/Modelos-DC.astro";
@@ -9,6 +11,7 @@ import ProfileCheck from "../components/icons/ProfileCheck.astro";
 import Models from "../components/icons/Models.astro";
 import Visualizador from "../components/Visualizador.astro";
 import Metodologia from "../components/Metodologia.astro";
+import Resultados from "../components/Resultados.astro";
 ---
 
 <Layout
@@ -26,7 +29,7 @@ import Metodologia from "../components/Metodologia.astro";
       <h2
         class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
       >
-        <CodeIcon class="size-7" />
+        <MetodologiaIcon class="size-7" />
         Metodología
       </h2>
       <Metodologia />
@@ -56,10 +59,21 @@ import Metodologia from "../components/Metodologia.astro";
       <h2
         class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
       >
-        <ProfileCheck class="size-8" />
+        <VisualizadorIcon class="size-8" />
         Visualizador
       </h2>
       <Visualizador />
     </SectionContainer> 
+
+    <SectionContainer id="resultados">
+      <h2
+        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+      >
+        <ProfileCheck class="size-8" />
+        Resultados
+      </h2>
+      <Resultados />
+    </SectionContainer>
+
   </div>
 </Layout>

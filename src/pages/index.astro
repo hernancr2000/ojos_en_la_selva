@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CodeIcon from "../components/icons/Code.astro";
+import DiscusionIcon from "../components/icons/DiscusionIcon.astro";
 import MetodologiaIcon from "../components/icons/Metodologia.astro";
 import VisualizadorIcon from "../components/icons/VisualizadorIcon.astro";
 import SectionContainer from "../components/SectionContainer.astro";
@@ -12,6 +13,7 @@ import Models from "../components/icons/Models.astro";
 import Visualizador from "../components/Visualizador.astro";
 import Metodologia from "../components/Metodologia.astro";
 import Resultados from "../components/Resultados.astro";
+import Discusion from "../components/Discusion.astro";
 ---
 
 <Layout
@@ -73,6 +75,16 @@ import Resultados from "../components/Resultados.astro";
         Resultados
       </h2>
       <Resultados />
+    </SectionContainer>
+
+    <SectionContainer id="discusion">
+      <h2
+        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+      >
+        <DiscusionIcon class="size-8" />
+        Discusión
+      </h2>
+      <Discusion />
     </SectionContainer>
 
   </div>
